@@ -30,11 +30,11 @@ namespace User.Infrastructure
                 RequireDigit = false
             };
 
-            manager.UserValidator = new CustomUserValidator(manager)
-            {
-                AllowOnlyAlphanumericUserNames = true,
-                RequireUniqueEmail = true
-            };
+            //manager.UserValidator = new CustomUserValidator(manager)
+            //{
+            //    AllowOnlyAlphanumericUserNames = true,
+            //    RequireUniqueEmail = true
+            //};
 
 
 

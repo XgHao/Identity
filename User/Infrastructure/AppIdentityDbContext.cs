@@ -33,51 +33,56 @@ namespace User.Infrastructure
         }
     }
 
+    public class IdentityDbInit : NullDatabaseInitializer<AppIdentityDbContext>
+    {
+
+    }
+
     /// <summary>
     /// 种植类（数据库初始化）
     /// </summary>
-    public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
-    {
-        protected override void Seed(AppIdentityDbContext context)
-        {
-            PerformInitialSetup(context);
-            base.Seed(context);
-        }
+    //public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
+    //{
+    //    protected override void Seed(AppIdentityDbContext context)
+    //    {
+    //        PerformInitialSetup(context);
+    //        base.Seed(context);
+    //    }
 
-        /// <summary>
-        /// 放置初始化的配置
-        /// </summary>
-        /// <param name="context"></param>
-        public void PerformInitialSetup(AppIdentityDbContext context)
-        {
-            AppUserManager userMgr = new AppUserManager(new UserStore<AppUser>(context));
-            AppRoleManager roleMgr = new AppRoleManager(new RoleStore<AppRole>(context));
+    //    /// <summary>
+    //    /// 放置初始化的配置
+    //    /// </summary>
+    //    /// <param name="context"></param>
+    //    public void PerformInitialSetup(AppIdentityDbContext context)
+    //    {
+    //        AppUserManager userMgr = new AppUserManager(new UserStore<AppUser>(context));
+    //        AppRoleManager roleMgr = new AppRoleManager(new RoleStore<AppRole>(context));
 
-            string roleName = "Administrators";
-            string userName = "XgHao";
-            string password = "zxhzxh";
-            string eamil = "957553851@qq.com";
+    //        string roleName = "Administrators";
+    //        string userName = "XgHao";
+    //        string password = "zxhzxh";
+    //        string eamil = "957553851@qq.com";
 
-            if (!roleMgr.RoleExists(roleName))
-            {
-                roleMgr.Create(new AppRole(roleName));
-            }
+    //        if (!roleMgr.RoleExists(roleName))
+    //        {
+    //            roleMgr.Create(new AppRole(roleName));
+    //        }
 
-            AppUser user = userMgr.FindByName(userName);
-            if (user == null)
-            {
-                userMgr.Create(new AppUser
-                {
-                    UserName = userName,
-                    Email = eamil,
-                }, password);
-                user = userMgr.FindByName(userName);
-            }
+    //        AppUser user = userMgr.FindByName(userName);
+    //        if (user == null)
+    //        {
+    //            userMgr.Create(new AppUser
+    //            {
+    //                UserName = userName,
+    //                Email = eamil,
+    //            }, password);
+    //            user = userMgr.FindByName(userName);
+    //        }
 
-            if (!userMgr.IsInRole(user.Id, roleName))
-            {
-                userMgr.AddToRole(user.Id, roleName);
-            }
-        }
-    }
+    //        if (!userMgr.IsInRole(user.Id, roleName))
+    //        {
+    //            userMgr.AddToRole(user.Id, roleName);
+    //        }
+    //    }
+    //}
 }
