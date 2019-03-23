@@ -12,6 +12,9 @@ using User.Models;
 
 namespace User.Controllers
 {
+    /// <summary>
+    /// 该控制器用来描述用户帐号的细节和数据
+    /// </summary>
     public class HomeController : Controller
     {
         // GET: Home

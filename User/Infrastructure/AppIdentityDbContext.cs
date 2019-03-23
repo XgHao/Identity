@@ -9,18 +9,23 @@ using Microsoft.AspNet.Identity;
 
 namespace User.Infrastructure
 {
+    /// <summary>
+    /// Entity Framework数据库的上下文类，用于对AppUser类进行操作。
+    /// 这里用Code First特性来创建和管理数据库架构，并提供数据库数据的访问
+    /// 这里上下文派生与IdentityDbContext<T>，这里的T就是用户类(AppUser.cs)
+    /// </summary>
     public class AppIdentityDbContext : IdentityDbContext<AppUser>
     {
-        //该类的构造器调用了他的基类，参数是连接字符串名称，用于连接数据库
+        //该类的构造器(函数)调用了他的基类，参数是连接字符串名称，用于连接数据库
         public AppIdentityDbContext() : base("IdentityDb") { }
 
         /// <summary>
-        /// 静态构造器
+        /// 静态构造器(函数)
         /// </summary>
         static AppIdentityDbContext()
         {
             //SetInitializer方法指定一个种植数据库类(向数据库中植入数据，即用数据对数据库初始化)
-            Database.SetInitializer<AppIdentityDbContext>(new IdentityDbInit());
+            Database.SetInitializer(new IdentityDbInit());
         }
 
         /// <summary>
@@ -39,7 +44,7 @@ namespace User.Infrastructure
     }
 
     /// <summary>
-    /// 种植类（数据库初始化）
+    /// 种植类（数据库初始化）当通过Entity Framework的Code First特性第一次创建数据库架构时，会使用到这个类
     /// </summary>
     //public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
     //{

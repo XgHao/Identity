@@ -6,6 +6,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace User.Models
 {
+    /// <summary>
+    /// 定义创建用户帐号所需要的基本属性
+    /// </summary>
     public class CreateModel
     {
         [Required]
@@ -18,6 +21,9 @@ namespace User.Models
         public string Password { get; set; }
     }
 
+    /// <summary>
+    /// 登录验证模型
+    /// </summary>
     public class LoginModel
     {
         [Required]
@@ -41,7 +47,7 @@ namespace User.Models
         public string[] IdsToDelete { get; set; }
     }
 
-    public class serViewModels
+    public class UserViewModels
     {
     }
 }
