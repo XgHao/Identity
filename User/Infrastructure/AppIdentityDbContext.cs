@@ -38,6 +38,9 @@ namespace User.Infrastructure
         }
     }
 
+    /// <summary>
+    /// NullDatabaseInitializer<AppIdentityDbContext>可以防止架构修改
+    /// </summary>
     public class IdentityDbInit : NullDatabaseInitializer<AppIdentityDbContext>
     {
 
@@ -45,6 +48,7 @@ namespace User.Infrastructure
 
     /// <summary>
     /// 种植类（数据库初始化）当通过Entity Framework的Code First特性第一次创建数据库架构时，会使用到这个类
+    /// DropCreateDatabaseIfModelChanges类会在Code First类改变时删除整个数据库，注释以防止他影响数据库
     /// </summary>
     //public class IdentityDbInit : DropCreateDatabaseIfModelChanges<AppIdentityDbContext>
     //{

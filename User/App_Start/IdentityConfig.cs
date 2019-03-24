@@ -24,7 +24,9 @@ namespace User.App_Start
             //CreatePerOwinContext用于创建AppUserManager的新实例
             //AppIdentityDbContext类用于每一个请求，能保证每一个请求对ASP.NET Identity数据有清晰的访问
             app.CreatePerOwinContext<AppIdentityDbContext>(AppIdentityDbContext.Create);
+            //注册用户管理器类
             app.CreatePerOwinContext<AppUserManager>(AppUserManager.Create);
+            //注册角色管理器类，这样能够确保，可以使用与AppUserManager类所用的用一个Entity Framework数据库上下文
             app.CreatePerOwinContext<AppRoleManager>(AppRoleManager.Create);
 
             //该方法告诉ASP.NET Identity如何用Cookie去标识已认证的用户

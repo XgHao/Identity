@@ -32,6 +32,9 @@ namespace User.Models
         public string Password { get; set; }
     }
 
+    /// <summary>
+    /// 该类实现在系统中传递角色细节和用户细节，按成员进行归类
+    /// </summary>
     public class RoleEditModel
     {
         public AppRole Role { get; set; }
@@ -39,6 +42,9 @@ namespace User.Models
         public IEnumerable<AppUser> NonMembers { get; set; }
     }
 
+    /// <summary>
+    /// 该类在用户递交它们的修改时，从模型绑定系统接受到一个类
+    /// </summary>
     public class RoleModificationModel
     {
         [Required]

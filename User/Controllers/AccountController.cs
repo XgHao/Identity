@@ -24,6 +24,7 @@ namespace User.Controllers
         [AllowAnonymous]//默认限制到已认证用户，但又能允许未认证用户登录到应用程序
         public ActionResult Login(string returnUrl)
         {
+            //检查用户是否已经认证
             if (HttpContext.User.Identity.IsAuthenticated)
             {
                 return View("Error", new string[] { "Access Denied" });
@@ -130,6 +131,10 @@ namespace User.Controllers
             return Redirect(returnUrl ?? "/");
         }
 
+        /// <summary>
+        /// 注销用户
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         public ActionResult Logout()
         {
